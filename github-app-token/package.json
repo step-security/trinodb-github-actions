@@ -8,8 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "tsc --noEmit",
-    "build": "ncc build src/index.ts --minify  --target es2021 --v8-cache",
+    "build": "tsc --noEmit && ncc build src/index.ts --minify  --target es2021 --v8-cache",
     "prettier": "prettier --ignore-path .gitignore \"./**/*.{cjs,js,json,md,ts,yml}\"",
     "xo": "xo"
   },
