@@ -1,0 +1,51 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /action-surefire-report
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /action-surefire-report/go
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /action-surefire-report
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /block-commits
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /block-commits
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /github-app-token/dist
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /github-app-token
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /slash-command-dispatch
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /action-surefire-report/tests
+    schedule:
+      interval: daily
