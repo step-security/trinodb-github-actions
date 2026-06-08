@@ -7,38 +7,35 @@ on:
         description: "Tag for the release"
         required: true
       node_version:
-        description: "Node.js version to use"
+        description: "Node.js version to use (node-based actions only)"
         required: false
         default: "24"
       working_directory:
-        description: "Comma-separated list of node-based action directories to release"
+        description: "Comma-separated list of action directories to release"
         required: false
-        default: "github-app-token,slash-command-dispatch"
+        default: "action-surefire-report,block-commits,github-app-token,slash-command-dispatch"
 
 permissions:
   contents: read
 
 jobs:
-  release:
+  release-node:
     strategy:
       fail-fast: false
       matrix:
         include:
           - working_directory: github-app-token
             script: yarn build
-            package_manager: yarn
           - working_directory: slash-command-dispatch
             script: npm run build
-            package_manager: npm
     permissions:
       actions: read
       id-token: write
       contents: write
-
     uses: step-security/reusable-workflows/.github/workflows/actions_release.yaml@v1
     with:
       tag: "${{ github.event.inputs.tag }}"
       script: ${{ matrix.script }}
-      package_manager: ${{ matrix.package_manager }}
       node_version: ${{ inputs.node_version || '24' }}
       working_directory: ${{ matrix.working_directory }}
+
