@@ -31,22 +31,17 @@ jobs:
         include:
           - working_directory: action-surefire-report
             script: npm run package
-            package_manager: npm
           - working_directory: block-commits
             script: npm test
-            package_manager: npm
           - working_directory: github-app-token
-            script: yarn build
-            package_manager: yarn
+            script: npm run build
           - working_directory: slash-command-dispatch
             script: npm run build
-            package_manager: npm
     uses: step-security/reusable-workflows/.github/workflows/audit_fix.yml@v1
     with:
       force: ${{ inputs.force || false }}
       base_branch: ${{ inputs.base_branch || 'main' }}
       script: ${{ matrix.script }}
-      package_manager: ${{ matrix.package_manager }}
       node_version: "${{ inputs.node_version || '24' }}"
       working_directory: ${{ matrix.working_directory }}
 
