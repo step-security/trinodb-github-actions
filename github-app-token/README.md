@@ -1,6 +1,6 @@
-# GitHub App Token
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
 
-Forked from [https://github.com/tibdex/github-app-token](https://github.com/tibdex/github-app-token) with no changes to defend against changes with a hash collision and repo deletion.
+# GitHub App Token
 
 This [JavaScript GitHub Action](https://help.github.com/en/actions/building-actions/about-actions#javascript-actions) can be used to impersonate a GitHub App when `secrets.GITHUB_TOKEN`'s limitations are too restrictive and a personal access token is not suitable.
 
@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Generate token
         id: generate_token
-        uses: tibdex/github-app-token@v1
+        uses: step-security/github-app-token@v1
         with:
           app_id: ${{ secrets.APP_ID }}
 

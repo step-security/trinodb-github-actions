@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v4
+        uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           commands: |
@@ -79,13 +79,13 @@ on:
         required: true
 ```
 
-Using [create-or-update-comment](https://github.com/peter-evans/create-or-update-comment) action there are a number of ways you can respond to the comment once the command has completed.
+Using [create-or-update-comment](https://github.com/step-security/create-or-update-comment) action there are a number of ways you can respond to the comment once the command has completed.
 
 The simplest response is to add a :tada: reaction to the comment.
 
 ```yml
       - name: Add reaction
-        uses: peter-evans/create-or-update-comment@v4
+        uses: step-security/create-or-update-comment@v4
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
@@ -107,7 +107,7 @@ The `error-message` output can be used to provide feedback to the user as follow
 ```yml
       - name: Slash Command Dispatch
         id: scd
-        uses: peter-evans/slash-command-dispatch@v4
+        uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           commands: |
@@ -118,7 +118,7 @@ The `error-message` output can be used to provide feedback to the user as follow
 
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
-        uses: peter-evans/create-or-update-comment@v4
+        uses: step-security/create-or-update-comment@v4
         with:
           comment-id: ${{ github.event.comment.id }}
           body: |

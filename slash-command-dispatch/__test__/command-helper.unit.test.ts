@@ -22,7 +22,7 @@ describe('command-helper tests', () => {
       permission: 'write',
       issueType: 'both',
       allowEdits: false,
-      repository: 'peter-evans/slash-command-dispatch',
+      repository: 'step-security/slash-command-dispatch',
       eventTypeSuffix: '-command',
       staticArgs: [],
       dispatchType: 'repository',
@@ -147,7 +147,7 @@ describe('command-helper tests', () => {
         permission: 'write',
         issue_type: 'both',
         allow_edits: false,
-        repository: 'peter-evans/slash-command-dispatch',
+        repository: 'step-security/slash-command-dispatch',
         event_type_suffix: '-command',
         static_args: [],
         dispatch_type: 'repository'
@@ -163,7 +163,7 @@ describe('command-helper tests', () => {
         permission: 'test-case-invalid-permission',
         issue_type: 'both',
         allow_edits: false,
-        repository: 'peter-evans/slash-command-dispatch',
+        repository: 'step-security/slash-command-dispatch',
         event_type_suffix: '-command',
         static_args: [],
         dispatch_type: 'repository'
@@ -181,7 +181,7 @@ describe('command-helper tests', () => {
         permission: 'write',
         issue_type: 'test-case-invalid-issue-type',
         allow_edits: false,
-        repository: 'peter-evans/slash-command-dispatch',
+        repository: 'step-security/slash-command-dispatch',
         event_type_suffix: '-command',
         static_args: [],
         dispatch_type: 'repository'
@@ -199,7 +199,7 @@ describe('command-helper tests', () => {
         permission: 'write',
         issue_type: 'both',
         allow_edits: false,
-        repository: 'peter-evans/slash-command-dispatch',
+        repository: 'step-security/slash-command-dispatch',
         event_type_suffix: '-command',
         static_args: [],
         dispatch_type: 'test-case-invalid-dispatch-type'

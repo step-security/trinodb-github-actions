@@ -6,7 +6,7 @@ describe('github-helper tests', () => {
   it('tests getActorPermission returns "none" for non-existent collaborators', async () => {
     const githubHelper = new GitHubHelper(token)
     const actorPermission = await githubHelper.getActorPermission(
-      {owner: 'peter-evans', repo: 'slash-command-dispatch'},
+      {owner: 'step-security', repo: 'slash-command-dispatch'},
       'collaborator-does-not-exist'
     )
     expect(actorPermission).toEqual('none')
@@ -15,8 +15,8 @@ describe('github-helper tests', () => {
   it('tests getActorPermission returns "admin"', async () => {
     const githubHelper = new GitHubHelper(token)
     const actorPermission = await githubHelper.getActorPermission(
-      {owner: 'peter-evans', repo: 'slash-command-dispatch'},
-      'peter-evans'
+      {owner: 'step-security', repo: 'slash-command-dispatch'},
+      'step-security'
     )
     expect(actorPermission).toEqual('admin')
   })
@@ -24,7 +24,7 @@ describe('github-helper tests', () => {
   it('tests getActorPermission returns "write"', async () => {
     const githubHelper = new GitHubHelper(token)
     const actorPermission = await githubHelper.getActorPermission(
-      {owner: 'peter-evans', repo: 'slash-command-dispatch'},
+      {owner: 'step-security', repo: 'slash-command-dispatch'},
       'actions-bot'
     )
     expect(actorPermission).toEqual('write')

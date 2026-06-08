@@ -10,5 +10,5 @@ module.exports = {
   verbose: true
 }
 process.env = Object.assign(process.env, {
-  GITHUB_REPOSITORY: "peter-evans/slash-command-dispatch"
+  GITHUB_REPOSITORY: "step-security/slash-command-dispatch"
 })

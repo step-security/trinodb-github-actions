@@ -11,6 +11,18 @@ on:
         description: "Specify a base branch"
         required: false
         default: "main"
+      script:
+        description: "Build script to run"
+        required: false
+        default: "npm run build"
+      package_manager:
+        description: "Package manager to use"
+        required: false
+        default: "npm"
+      node_version:
+        description: "Node.js version to use"
+        required: false
+        default: "24"
   schedule:
     - cron: "0 0 * * 1"
 
@@ -20,6 +32,9 @@ jobs:
     with:
       force: ${{ inputs.force || false }}
       base_branch: ${{ inputs.base_branch || 'main' }}
+      script: ${{ inputs.script || 'npm run build' }}
+      package_manager: ${{ inputs.package_manager || 'npm' }}
+      node_version: ${{ inputs.node_version || '24' }}
 
 permissions:
   contents: write

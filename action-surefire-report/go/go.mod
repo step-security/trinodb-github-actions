@@ -1,4 +1,4 @@
-module github.com/ScaCap/action-surefire-report
+module github.com/step-security/action-surefire-report
 
 go 1.18
 

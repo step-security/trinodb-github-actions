@@ -86,7 +86,7 @@ test.py:14: AttributeError
     it('should parse correctly filename and line for a Go file when filename is in stack trace', () => {
         const {filename, line} = resolveFileAndLine(
             null,
-            'com/ScaCap/action-surefire-report',
+            'com/step-security/action-surefire-report',
             'main_test.go:8: failing test',
             true,
         );

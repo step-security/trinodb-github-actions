@@ -1,7 +1,6 @@
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
+
 # GitHub Action: Process maven surefire reports
-
-![](https://github.com/scacap/action-surefire-report/workflows/build/badge.svg)
-
 
 This action processes maven surefire or failsafe XML reports on pull requests and shows the result as a PR check with summary and annotations.
 
@@ -63,12 +62,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v6
       - name: Build and Run Tests
         run: mvn test --batch-mode --fail-at-end
       - name: Publish Test Report
         if: success() || failure()
-        uses: scacap/action-surefire-report@v1
+        uses: step-security/action-surefire-report@v1
 ```
 
 ## Tips for Gradle

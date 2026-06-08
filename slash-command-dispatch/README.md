@@ -1,6 +1,6 @@
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
+
 # Slash Command Dispatch
-[![CI](https://github.com/peter-evans/slash-command-dispatch/workflows/CI/badge.svg)](https://github.com/peter-evans/slash-command-dispatch/actions?query=workflow%3ACI)
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Slash%20Command%20Dispatch-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAM6wAADOsB5dZE0gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAERSURBVCiRhZG/SsMxFEZPfsVJ61jbxaF0cRQRcRJ9hlYn30IHN/+9iquDCOIsblIrOjqKgy5aKoJQj4O3EEtbPwhJbr6Te28CmdSKeqzeqr0YbfVIrTBKakvtOl5dtTkK+v4HfA9PEyBFCY9AGVgCBLaBp1jPAyfAJ/AAdIEG0dNAiyP7+K1qIfMdonZic6+WJoBJvQlvuwDqcXadUuqPA1NKAlexbRTAIMvMOCjTbMwl1LtI/6KWJ5Q6rT6Ht1MA58AX8Apcqqt5r2qhrgAXQC3CZ6i1+KMd9TRu3MvA3aH/fFPnBodb6oe6HM8+lYHrGdRXW8M9bMZtPXUji69lmf5Cmamq7quNLFZXD9Rq7v0Bpc1o/tp0fisAAAAASUVORK5CYII=)](https://github.com/marketplace/actions/slash-command-dispatch)
 
 A GitHub action that facilitates ["ChatOps"](https://www.pagerduty.com/blog/what-is-chatops/) by creating dispatch events for slash commands.
 
@@ -20,14 +20,6 @@ Dispatching commands to be processed elsewhere keeps the workflow queue moving q
 An additional benefit of dispatching is that it allows non-sensitive workloads to be run in public repositories to save using private repository GitHub Action minutes.
 
 <div align="center"><img src="docs/assets/slash-command-dispatch.png" width="550"></div>
-
-## Demos
-
-See it in action with the following live demos.
-
-- [ChatOps Demo in Issues](https://github.com/peter-evans/slash-command-dispatch/issues/3)
-- [ChatOps Demo in Pull Requests](https://github.com/peter-evans/slash-command-dispatch/pull/8)
-- [Slash command code formatting - Python](https://github.com/peter-evans/slash-command-dispatch/pull/28)
 
 ## Documentation
 
@@ -54,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v4
+        uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           commands: |
@@ -102,7 +94,7 @@ You can use a [PAT](https://docs.github.com/en/github/authenticating-to-github/c
 
 ```yml
       - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v4
+        uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           reaction-token: ${{ secrets.PAT }}
@@ -123,7 +115,7 @@ Setting `write` as the required permission level means that any user with `write
 Note that `read`, `triage` and `maintain` are only applicable to organization repositories.
 For repositories owned by a user account there are only two permission levels, the repository owner (`admin`) and collaborators (`write`).
 
-There is a known issue with permissions when using [nested teams](https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams#nested-teams) in a GitHub organization. See [here](https://github.com/peter-evans/slash-command-dispatch/issues/120) for further details.
+There is a known issue with permissions when using [nested teams](https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams#nested-teams) in a GitHub organization. See [here](https://github.com/step-security/slash-command-dispatch/issues) for further details.
 
 #### `dispatch-type`
 
@@ -178,7 +170,7 @@ It will also contain any static arguments if configured.
 
 To demonstrate, take the following configuration as an example.
 ```yml
-      - uses: peter-evans/slash-command-dispatch@v4
+      - uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           commands: |
@@ -242,13 +234,13 @@ Note that the `client_payload.github.payload.issue.body` and `client_payload.pul
 
 ### Responding to the comment on command completion
 
-Using [create-or-update-comment](https://github.com/peter-evans/create-or-update-comment) action there are a number of ways you can respond to the comment once the command has completed.
+Using [create-or-update-comment](https://github.com/step-security/create-or-update-comment) action there are a number of ways you can respond to the comment once the command has completed.
 
 The simplest response is to add a :tada: reaction to the comment.
 
 ```yml
       - name: Add reaction
-        uses: peter-evans/create-or-update-comment@v4
+        uses: step-security/create-or-update-comment@v4
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
@@ -264,7 +256,7 @@ Another option is to reply with a new comment containing a link to the run outpu
         run: echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> $GITHUB_OUTPUT
 
       - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: step-security/create-or-update-comment@v4
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}

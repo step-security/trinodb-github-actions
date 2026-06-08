@@ -8,7 +8,7 @@ For example, the following basic configuration means that all commands must have
 
 ```yml
       - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v4
+        uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           commands: |
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v4
+        uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           config: >
@@ -47,13 +47,13 @@ jobs:
                 "command": "rebase",
                 "permission": "admin",
                 "issue_type": "pull-request",
-                "repository": "peter-evans/slash-command-dispatch-processor"
+                "repository": "step-security/slash-command-dispatch-processor"
               },
               {
                 "command": "integration-test",
                 "permission": "write",
                 "issue_type": "both",
-                "repository": "peter-evans/slash-command-dispatch-processor",
+                "repository": "step-security/slash-command-dispatch-processor",
                 "static_args": [
                   "production",
                   "region=us-east-1"
@@ -82,9 +82,9 @@ jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v4
+        uses: step-security/slash-command-dispatch@v1
         with:
           token: ${{ secrets.PAT }}
           config-from-file: .github/slash-command-dispatch.json
@@ -96,8 +96,8 @@ Advanced configuration requires a combination of YAML based inputs and JSON conf
 
 | Input | JSON Property | Description | Default |
 | --- | --- | --- | --- |
-| `token` | | (**required**) A `repo` scoped [Personal Access Token (PAT)](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). Note: `GITHUB_TOKEN` *does not* work here. See [token](https://github.com/peter-evans/slash-command-dispatch#token) for further details. | |
-| `reaction-token` | | `GITHUB_TOKEN` or a `repo` scoped [Personal Access Token (PAT)](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). See [reaction-token](https://github.com/peter-evans/slash-command-dispatch#reaction-token) for further details. | `GITHUB_TOKEN` |
+| `token` | | (**required**) A `repo` scoped [Personal Access Token (PAT)](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). Note: `GITHUB_TOKEN` *does not* work here. See [token](https://github.com/step-security/slash-command-dispatch#token) for further details. | |
+| `reaction-token` | | `GITHUB_TOKEN` or a `repo` scoped [Personal Access Token (PAT)](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). See [reaction-token](https://github.com/step-security/slash-command-dispatch#reaction-token) for further details. | `GITHUB_TOKEN` |
 | `reactions` | | Add reactions. :eyes: = seen, :rocket: = dispatched | `true` |
 | | `command` | (**required**) The slash command. | |
 | | `permission` | The repository permission level required by the user to dispatch the command. (`none`, `read`, `triage`, `write`, `maintain`, `admin`) | `write` |
