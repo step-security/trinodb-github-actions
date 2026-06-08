@@ -34,7 +34,7 @@ const resolvePath = async filenameWithPackage => {
     core.debug(`Matched files: ${results}`);
     const searchPath = globber.getSearchPaths()[0];
 
-    let path = '';
+    let path;
     if (results.length) {
         // skip various temp folders
         const found = results.find(r => !r.includes('__pycache__') && !r.endsWith('.class'));
