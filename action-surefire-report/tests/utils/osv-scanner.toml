@@ -1,0 +1,11 @@
+[[IgnoredVulns]]
+id = "GHSA-j288-q9x7-2f5v"
+reason = "commons-lang3 is a test fixture dependency for the surefire report parser; not shipped in the action runtime, so not exploitable in production"
+
+[[IgnoredVulns]]
+id = "GHSA-2qp4-g3q3-f92w"
+reason = "kotlin-stdlib is used only in test fixtures for the surefire parser; not shipped in the action runtime, so not exploitable in production"
+
+[[IgnoredVulns]]
+id = "GHSA-cqj8-47ch-rvvq"
+reason = "kotlin-stdlib is used only in test fixtures for the surefire parser; not shipped in the action runtime, so not exploitable in production"

@@ -31,7 +31,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: |
             block-commits/package-lock.json
-            github-app-token/yarn.lock
+            github-app-token/package-lock.json
             slash-command-dispatch/package-lock.json
 
       - name: Build and test block-commits
@@ -44,9 +44,8 @@ jobs:
       - name: Build and test github-app-token
         working-directory: github-app-token
         run: |
-          yarn install --frozen-lockfile
-          yarn run yarn-deduplicate --fail
-          yarn run build
+          npm ci
+          npm run build
 
       - name: Build and test slash-command-dispatch
         working-directory: slash-command-dispatch
