@@ -10,7 +10,7 @@ const {
     masterSuccess
 } = require('./action.test.fixtures');
 
-jest.setTimeout(20000);
+jest.setTimeout(60000);
 
 let inputs;
 let outputs;

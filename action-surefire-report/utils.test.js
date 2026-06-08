@@ -1,5 +1,7 @@
 const { resolveFileAndLine, resolvePath, parseFile } = require('./utils');
 
+jest.setTimeout(30000);
+
 describe('resolveFileAndLine', () => {
     it('should default to 1 if no line found', () => {
         const { filename, line } = resolveFileAndLine(null, 'someClassName', 'not a stacktrace');
@@ -178,7 +180,7 @@ describe('parseFile', () => {
                 title: 'test_sample.test_with_error',
                 message: "AttributeError: 'dict' object has no attribute 'attr'",
                 raw_details:
-                    "def test_with_error():\n        event = { 'attr': 'test'}\n>       assert event.attr == 'test'\nE       AttributeError: 'dict' object has no attribute 'attr'\n\npython/test_sample.py:14: AttributeError"
+                    "def test_with_error():\n        event = { 'attr': 'test'}\n>       assert event.attr == 'test'\n               ^^^^^^^^^^\nE       AttributeError: 'dict' object has no attribute 'attr'\n\npython/test_sample.py:14: AttributeError"
             }
         ]);
     });

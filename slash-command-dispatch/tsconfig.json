@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2022",
     "module": "commonjs",
     "lib": [
-      "es6"
+      "es2022"
     ],
     "outDir": "./lib",
     "rootDir": "./src",
     "declaration": true,
     "strict": true,
     "noImplicitAny": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "exclude": ["__test__", "lib", "node_modules"]
 }
