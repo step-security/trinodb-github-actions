@@ -1,0 +1,18 @@
+# Trivy 0.63 false positives — scanner reads nested `node_modules/**/package.json`
+# semver lower-bounds as the "installed version" instead of consulting the
+# lockfile. Our package-lock.json resolves both packages to patched releases.
+#
+# Verify with:
+#   python3 -c "import json; lock=json.load(open('package-lock.json')); \
+#       [print(n,'->',i['version']) for n,i in lock['packages'].items() \
+#        if n.endswith('/brace-expansion') or n.endswith('/ip-address')]"
+#
+# Upgrade Trivy to >=0.71 and these can be removed (the bug is fixed upstream).
+
+# brace-expansion: minimatch declares `^5.0.5`; lockfile resolves to 5.0.6 (patched).
+# Affected transitive: eslint (devDep) → minimatch → brace-expansion
+CVE-2026-45149
+
+# ip-address: socks declares `^10.1.1`; lockfile resolves to 10.2.0 (newer than patched 10.1.1).
+# Affected transitive: cacache (npm internal) → socks-proxy-agent → socks → ip-address
+CVE-2026-42338

@@ -1,0 +1,7 @@
+[[IgnoredVulns]]
+id = "GHSA-j288-q9x7-2f5v"
+reason = "commons-lang3 is a test fixture dependency for the surefire report parser; not shipped in the action runtime, so not exploitable in production"
+
+[[IgnoredVulns]]
+id = "GHSA-rqfh-9r24-8c9r"
+reason = "assertj-core is a test-scope dependency used only as a test fixture for the surefire parser; not shipped in the action runtime, so not exploitable in production"

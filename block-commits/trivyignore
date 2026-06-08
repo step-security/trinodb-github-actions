@@ -1,0 +1,31 @@
+# Mirrors the rationale in osv-scanner.toml so Trivy and OSV-Scanner produce
+# the same accepted-risk posture for this action.
+
+# ─── False positives from Trivy 0.63 (lockfile actually has patched versions) ─
+# brace-expansion lockfile resolves to 5.0.6 (patched); minimatch declares ^5.0.5
+# which Trivy mistakes for the installed version. Upgrade Trivy >=0.71 to drop.
+CVE-2026-45149
+# ip-address lockfile resolves to 10.2.0; socks declares ^10.1.1 which Trivy
+# misreads as 10.1.0. Same upstream Trivy bug.
+CVE-2026-42338
+
+# ─── undici 5.29.0 (transitive via @actions/github 6.0.1) — accepted risk ─
+# This action only makes REST calls to trusted GitHub API via the @actions SDK;
+# none of the undici attack vectors below are reachable. See osv-scanner.toml
+# for the GHSA equivalents of these CVEs.
+#
+# CVE-2026-1525 — HTTP request smuggling via duplicate Content-Length
+# Not exploitable: requests go to api.github.com only, with SDK-managed headers.
+CVE-2026-1525
+# CVE-2026-1527 — HTTP header injection / request smuggling
+# Not exploitable: action does not set arbitrary user-controlled headers.
+CVE-2026-1527
+# CVE-2026-22036 — DoS via excessive decompression steps
+# Not exploitable: GitHub API is the only counterparty; not a malicious server.
+CVE-2026-22036
+# CVE-2026-2229 — WebSocket permessage-deflate DoS via invalid extension param
+# Not exploitable: this action never opens WebSocket connections.
+CVE-2026-2229
+# CVE-2026-1526 — WebSocket permessage-deflate unbounded memory consumption
+# Not exploitable: this action never opens WebSocket connections.
+CVE-2026-1526
